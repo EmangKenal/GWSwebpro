@@ -20,10 +20,10 @@ Route::get('/detail/{disease}',[DiseaseController::class,'detail'])->name('disea
 Route::get('/search', [DiseaseController::class, 'search'])->name('search');
 
 // admin panel
-Route::get('/admin/add-disease', [DiseaseController::class, 'showAddForm'])->name('disease-form');
+Route::get('/admin/add-disease', [DiseaseController::class, 'showAddForm'])->name('disease-form')->middleware('auth');
 Route::post('/admin/add-disease', [DiseaseController::class, 'create'])->name('disease-add');
 
-Route::get('/admin/edit-disease/{disease}', [DiseaseController::class, 'edit'])->name('disease.edit');
+Route::get('/admin/edit-disease/{disease}', [DiseaseController::class, 'edit'])->name('disease.edit')->middleware('auth');
 Route::put('/admin/update-disease/{id}', [DiseaseController::class, 'update'])->name('disease.update');
 
 Route::delete('/admin/delete-disease/{id}', [DiseaseController::class, 'delete'])->name('disease.delete');

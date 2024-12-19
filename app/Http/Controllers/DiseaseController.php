@@ -20,8 +20,7 @@ class DiseaseController extends Controller
             ->orWhere('treatment', 'LIKE', "%$keyword%")
             ->paginate(8)
             ->appends(['search' => $keyword]);
-
-            // dd($keyword);
+            
         }
         else $diseases = Disease::paginate(8);
 
@@ -114,7 +113,7 @@ class DiseaseController extends Controller
             'symptoms' => 'required|string',
             'causes' => 'required|string',
             'treatment' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // Optional image upload
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // Handle image upload if present
